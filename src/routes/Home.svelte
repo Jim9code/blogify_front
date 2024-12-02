@@ -1,19 +1,21 @@
 <script>
-
-
-    let blogs = [
-      {
-        id: 1,
-        title: "How to fix req.regenerate error, when ypu log out. ",
-        excerpt: "This is the first blog  the card design to display the image. Here's the revised code",
-        likes: 0,
-        comments: 3,
-        views: 45,
-        image: "/test.jpg.jpg", // Replace with your thumbnail URL
-      },
-    ];
+  import { onMount } from "svelte";
   
-   
+	const serverUrl = import.meta.env.VITE_SERVER_URL
+
+    let blogs = [];
+  
+    async function blog() {
+    const res = await fetch(`${serverUrl}/blogs`,{credentials:'include'})
+    if(res.ok){
+      blogs= await res.json()
+    }
+  }
+	
+
+	onMount(()=>{
+    blog()
+  })
 
    
 
@@ -36,26 +38,26 @@
         <main class="blogcon">
           {#each blogs as blog}
             <div class="blog-card">
-              <img class="thumbnail" src={blog.image} alt="Thumbnail for {blog.title}" />
+              <a href="/{blog.id}">
+                <img class="thumbnail" src={blog.cloudinary_url} alt="Thumbnail for {blog.blog_title}" />
+              </a>
                <!-- smal pic -->
-               <a class="profilePic"  href="/profile">           
+                         
                 <div style="margin-top: 4px;">
-                  <!-- svelte-ignore a11y-img-redundant-alt -->
-                  <img src="test.jpg.jpg" crossorigin="anonymous" alt="Profile picture" width="30px" height="30px" class="rounded-circle">
-                  <small>Jeth Daspero</small>
+                  <small>Posted by {blog.bloger_username}</small>
                 </div>
-                </a>
+                
               <div class="content">
                 
-                <h6>{blog.title}</h6>
+                <h6><a href="/{blog.id}">{blog.blog_title}</a></h6>
                 <!-- <p>{blog.excerpt}</p> -->
               </div>
-              <div class="interaction-bar">
-                <span class="icon">👍 {blog.likes}</span>
-                <span class="icon">💬 {blog.comments}</span>
+              <!-- <div class="interaction-bar">
+                <span class="icon">👍 0</span>
+                <span class="icon">💬 0</span>
                 <span class="icon">🔗 Share</span>
-                <span class="icon">👀 {blog.views}</span>
-              </div>
+                <span class="icon">👀 0</span>
+              </div> -->
             </div>
           {/each}
         </main>
@@ -64,6 +66,10 @@
  
 
   <style>
+    h6 a{
+      color: black;
+      text-decoration: none;
+    }
     .profilePic{
         color: green;
         text-decoration: none;

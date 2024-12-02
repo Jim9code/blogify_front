@@ -39,7 +39,7 @@ onMount(()=>{
           <a class="profilePic"  href="/profile">           
             <div>
               <!-- svelte-ignore a11y-img-redundant-alt -->
-              <img src={profilePicture || DefaultProfile} crossorigin="anonymous" alt="Profile picture" width="40px" height="40px" class="rounded-circle">
+              <img src={profilePicture || DefaultProfile}  alt="Profile picture" width="40px" height="40px" class="rounded-circle">
             </div>
             </a>
 

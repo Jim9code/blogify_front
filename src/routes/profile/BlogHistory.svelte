@@ -2,11 +2,19 @@
 	import { onMount } from 'svelte';
 	const serverUrl = import.meta.env.VITE_SERVER_URL
 
-	
-	
+	let bloghistory = []
+
+	async function blogHistory() {
+    const res = await fetch(`${serverUrl}/bloghistory`,{credentials:'include'})
+    if(res.ok){
+      bloghistory= await res.json()
+    }
+  }
 	
 
-	
+	onMount(()=>{
+    blogHistory()
+  })
 </script>
 
 
@@ -15,26 +23,32 @@
 				<div class="outerdiv">
 					<main class="blogcon">
 						<h6><strong>History...</strong></h6>
-					  
-						<div class="blog-card">
-						  <img class="thumbnail" src="https://res.cloudinary.com/dh753xlhq/image/upload/v1733129773/blogs/iugwubprp4lr2hi4wyar.jpg" alt="Thumbnail for Star wars" />
+					  {#each bloghistory as blog}
+            <div class="blog-card">
+						  <img class="thumbnail" src={blog.cloudinary_url} alt="Thumbnail for Star wars" />
 						  <div class="content">
-							<h2>Star wars</h2>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit, officiis.</p>
+							<h2><a href="{blog.id}">{blog.blog_title}</a> </h2>
+							<small>Written by You at {blog.created_at}</small>
 						  </div>
-						  <div class="interaction-bar">
-							<span class="icon">👍 0</span>
+						  <!-- <div class="interaction-bar"> -->
+							<!-- <span class="icon">👍 0</span> -->
 							<!-- <span class="icon">💬 3</span> -->
 							<!-- <span class="icon">🔗 Share</span> -->
-							<span class="icon">👀 30k</span>
-						  </div>
+							<!-- <span class="icon">👀 30k</span> -->
+						  <!-- </div> -->
 						</div>
+            {/each}
 					</main>
 				  </div>
 
 
 
 <style>
+  h2 a{
+    color: black;
+    text-decoration: none;
+    font-family: sans-serif;
+  }
 	h6 strong {
 		position: sticky;
 		top: 0px;

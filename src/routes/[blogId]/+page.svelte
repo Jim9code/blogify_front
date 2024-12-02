@@ -1,21 +1,24 @@
 <script>
+import {page} from '$app/stores'
+import { onMount } from "svelte";
+let blogId = $page.params.blogId;
 
+	const serverUrl = import.meta.env.VITE_SERVER_URL
 
-    let blogs = [
-      {
-        id: 1,
-        title: "How to fix req.regenerate error, when ypu log out. ",
-        excerpt: "This is the first blog  the card design to display the image. Here's the revised code",
-        likes: 0,
-        comments: 3,
-        views: 45,
-        image: "/test.jpg.jpg", // Replace with your thumbnail URL
-      },
-    ];
+    let singleblog= [];
   
-   
+    async function singleBlog() {
+    const res = await fetch(`${serverUrl}/${blogId}`,{credentials:'include'})
+    if(res.ok){
+      singleblog= await res.json()
+    }
+  }
+	
 
-   
+	onMount(()=>{
+    singleBlog()
+  })
+
 
   </script>
   
@@ -27,21 +30,21 @@
 
     <div class="outerdiv">
         <main class="blogcon">
-          {#each blogs as blog}
+          {#each singleblog as blog}
             <div class="blog-card">
-              <img class="thumbnail" src={blog.image} alt="Thumbnail for {blog.title}" />
+              <img class="thumbnail" src={blog.cloudinary_url} alt="Thumbnail for {blog.blog_title}" />
                <!-- smal pic -->
-               <a class="profilePic"  href="/profile">           
+                      
                 <div style="margin-top: 4px;">
                   <!-- svelte-ignore a11y-img-redundant-alt -->
-                  <img src="test.jpg.jpg" crossorigin="anonymous" alt="Profile picture" width="30px" height="30px" class="rounded-circle">
-                  <small>Jeth Daspero</small>
+                  <!-- <img src={blog.bloger_pic} crossorigin="anonymous" alt="Profile picture" width="30px" height="30px" loading="lazy" class="rounded-circle"> -->
+                  <small>Posted by {blog.bloger_username}</small>
                 </div>
-                </a>
+            
               <div class="content">
                 
-                <h6>{blog.title}</h6>
-                <p>{blog.excerpt}</p>
+                <h6>{blog.blog_title}</h6>
+                <p>{@html blog.blog_content}</p>
               </div>
               <!-- <div class="interaction-bar">
                 <span class="icon">👍 {blog.likes}</span>
