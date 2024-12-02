@@ -23,14 +23,7 @@
   
 <div>
   
-    <div class="searchdiv">
-      <form >
-        <center>
-            <input class="searchinput" type="search" placeholder="🔍 Search" > 
-            <button class="btn_search" type="submit">Search</button>
-        </center>
-      </form>
-    </div>
+
 
     <div class="outerdiv">
         <main class="blogcon">
@@ -48,14 +41,14 @@
               <div class="content">
                 
                 <h6>{blog.title}</h6>
-                <!-- <p>{blog.excerpt}</p> -->
+                <p>{blog.excerpt}</p>
               </div>
-              <div class="interaction-bar">
+              <!-- <div class="interaction-bar">
                 <span class="icon">👍 {blog.likes}</span>
                 <span class="icon">💬 {blog.comments}</span>
                 <span class="icon">🔗 Share</span>
                 <span class="icon">👀 {blog.views}</span>
-              </div>
+              </div> -->
             </div>
           {/each}
         </main>
@@ -69,35 +62,6 @@
         text-decoration: none;
     }
 
-    .btn_search{
-        background: rgba(50, 205, 50, 0.1);
-        border-radius: 8px;
-        padding: 7px;
-        font-weight: bolder;
-        border: none;
-        font-size: 20px;
-    }
-
-  form{
-  display: flex;
-  justify-content: space-between;
-}
-
-  .searchinput{
-  padding: 7.5px;
-  width: 70%;
-  border-radius: 8px;
-  }.searchinput:focus{
-    border: 1px solid rgba(50, 205, 50, 0.696);
-  }
-    .searchdiv{
-        display: flex;
-        justify-content: center;
-        padding: 30px;
-        position: sticky;
-        top: 0px;
-        z-index: 2000;
-    }
     .blogcon{
         width: 50%;
     }

@@ -13,7 +13,6 @@
     const res = await fetch(`${serverUrl}/protected`,{credentials:'include'})
     if(res.ok){
       const data = await res.json()
-      console.log(data.profile_pic)
       logged_in = data.authenticated
     }
   }

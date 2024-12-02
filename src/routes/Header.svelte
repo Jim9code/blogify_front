@@ -11,7 +11,6 @@ async function login_status() {
     const res = await fetch(`${serverUrl}/protected`,{credentials:'include'})
     if(res.ok){
       const data = await res.json()
-      console.log(data.profile_pic)
       profilePicture = data.profile_pic
       authenticated = data.authenticated
     }

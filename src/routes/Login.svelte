@@ -6,7 +6,7 @@
 
 <div class="outdiv">
     <div class="inner_div">
-        <center> <h6>Sign in or Sign up with google 👍</h6></center>
+        <center> <h6><strong style="color: green;">Sign In</strong> or <strong style="color: orangered;">Sign Up</strong> 💭</h6></center>
         <br>
         <br><br><br>
         <center>
