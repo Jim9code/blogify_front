@@ -50,7 +50,9 @@
         blogThumbnailPreview = null;
       }
     }
-  
+
+    let success = ''
+     let added = false
     let loading = false
    async function submitBlog(event) {
      loading = true
@@ -75,6 +77,8 @@
         blogTitle = ''
         blogContent = ''
         blogThumbnail = null
+        added = true
+        success = result.success
       } 
     } catch (err) {
       console.error("Network error:", err);
@@ -104,29 +108,39 @@
       {#if loading}
         <Spinner/>
          {:else}
-         <div class="form-group">
-           <label for="title">Blog Title:</label><br>
-           <input id="title" type="text" bind:value={blogTitle} placeholder="Enter blog title" />
-         </div>
-     
-         <div class="form-group">
-           <label for="thumbnail">Thumbnail:</label><br>
-           <input id="thumbnail" type="file" accept="image/*" on:change={handleThumbnailChange} />
-           {#if blogThumbnailPreview}
-             <img
-               src={blogThumbnailPreview}
-               alt="Thumbnail Preview"
-               class="thumbnail-preview"
-             />
-           {/if}
-         </div>
-     
-         <div class="form-group">
-           <label for="editor">Blog Content:</label>
-           <div id="editor"></div>
-         </div>
-     
-         <button on:click={submitBlog}>Submit Blog</button>
+            {#if added}
+            {#if success === ''}
+            <div></div>
+             {:else}
+             <div class="alert alert-success">
+              {success}
+              </div>
+                   {/if}
+                 {:else}
+                 <div class="form-group">
+                  <label for="title">Blog Title:</label><br>
+                  <input id="title" type="text" bind:value={blogTitle} placeholder="Enter blog title" />
+                </div>
+            
+                <div class="form-group">
+                  <label for="thumbnail">Thumbnail:</label><br>
+                  <input id="thumbnail" type="file" accept="image/*" on:change={handleThumbnailChange} />
+                  {#if blogThumbnailPreview}
+                    <img
+                      src={blogThumbnailPreview}
+                      alt="Thumbnail Preview"
+                      class="thumbnail-preview"
+                    />
+                  {/if}
+                </div>
+            
+                <div class="form-group">
+                  <label for="editor">Blog Content:</label>
+                  <div id="editor"></div>
+                </div>
+            
+                <button on:click={submitBlog}>Submit Blog</button>
+            {/if}
       {/if}
       
     </section>

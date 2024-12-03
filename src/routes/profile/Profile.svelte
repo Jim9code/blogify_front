@@ -50,11 +50,14 @@ onMount(()=>{
 			/>
 			<h5 class="mt-2">{user.name}</h5>
 
-			{#if add_new_blog}
-			<button on:click={()=>{add_new_blog = false}}>Close</button>
+			<div class="closebtn">
+			 {#if add_new_blog}
+			<button on:click={()=>{add_new_blog = false}}> <span>close</span> </button>
 			  {:else}
 			  <button on:click={()=>{add_new_blog = true}}>Add new blog</button>
 			{/if}
+			</div>
+
 			
 
 			<!-- history Section -->
@@ -74,7 +77,15 @@ onMount(()=>{
 
 <style>
 	
-
+.closebtn button{
+    border-radius: 8px;
+	background: transparent;
+	color: green;
+	
+}
+.closebtn button span{
+	color: orangered;
+}
 
 	#info {
 		background: white;
