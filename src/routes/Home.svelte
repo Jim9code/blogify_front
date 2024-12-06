@@ -11,6 +11,25 @@
       blogs= await res.json()
     }
   }
+
+  //  handle  search
+  
+  let searchWord = ''
+  async function search() {
+    if(searchWord !== ''){
+      const res = await fetch(`${serverUrl}/search`,{
+      method:'post',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({searchWord}),
+      credentials:'include'
+    })
+    if(res.ok){
+      blogs= await res.json()
+    }
+  }else{
+    blog()
+  }
+  }
 	
 
 	onMount(()=>{
@@ -26,9 +45,9 @@
 <div>
   
     <div class="searchdiv">
-      <form >
+      <form on:submit|preventDefault={search} >
         <center>
-            <input class="searchinput" type="search" placeholder="🔍 Search" > 
+            <input bind:value={searchWord} class="searchinput" type="search" placeholder="🔍 Search" > 
             <button class="btn_search" type="submit">Search</button>
         </center>
       </form>
@@ -36,6 +55,10 @@
 
     <div class="outerdiv">
         <main class="blogcon">
+          {#if blogs.length <= 0}
+          <center><h6>No search  result !</h6></center>
+          {/if}
+
           {#each blogs as blog}
             <div class="blog-card">
               <a href="/{blog.id}">

@@ -71,8 +71,8 @@
                   ⚙️
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="/report">Report</a></li>
-                  <li><a class="dropdown-item" href="/">Edit</a></li>
+                  <!-- <li><a class="dropdown-item" href="/report">Report</a></li> -->
+                  <li><a class="dropdown-item" href="/profile/{blog.id}">Edit</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a on:click={deleteBlog(blog.id)} class="dropdown-item" href="/profile">Delete</a></li>
                 </ul>
