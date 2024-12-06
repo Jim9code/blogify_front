@@ -60,10 +60,7 @@ let blogId = $page.params.blogId;
  
 
   <style>
-    .profilePic{
-        color: green;
-        text-decoration: none;
-    }
+
 
     .blogcon{
         width: 50%;
@@ -93,20 +90,7 @@ let blogId = $page.params.blogId;
     .content p{
       font-family: sans-serif;
     }
-    .content h2{
-      font-family: sans-serif;
-    }
-
-    .interaction-bar {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 4px;
-      margin-bottom: 15px;
-    }
-    .icon {
-      cursor: pointer;
-      font-size: 18px;
-    }
+    
 
     @media only screen and (max-width:768px){
       .outerdiv{
@@ -115,15 +99,9 @@ let blogId = $page.params.blogId;
       .blogcon{
         width: 100%;
       }
-      .searchinput{
-        padding: 5px;
-        padding-left: 5px;
-      }
-      .btn_search{
-        margin-top: 5px;
-        font-size: 15px;
 
-      }
+
+    
     }
   </style>
 

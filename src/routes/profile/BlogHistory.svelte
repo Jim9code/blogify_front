@@ -141,15 +141,6 @@
     .content {
       padding: 16px;
     }
-    .interaction-bar {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 8px;
-    }
-    .icon {
-      cursor: pointer;
-      font-size: 18px;
-    }
 
     @media only screen and (max-width:768px){
       .outerdiv{

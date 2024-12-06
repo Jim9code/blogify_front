@@ -93,10 +93,7 @@
       color: black;
       text-decoration: none;
     }
-    .profilePic{
-        color: green;
-        text-decoration: none;
-    }
+
 
     .btn_search{
         background: rgba(50, 205, 50, 0.1);
@@ -152,23 +149,7 @@
       padding: 16px;
       padding-bottom: 2px;
     }
-    .content p{
-      font-family: sans-serif;
-    }
-    .content h2{
-      font-family: sans-serif;
-    }
 
-    .interaction-bar {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 4px;
-      margin-bottom: 15px;
-    }
-    .icon {
-      cursor: pointer;
-      font-size: 18px;
-    }
 
     @media only screen and (max-width:768px){
       .outerdiv{

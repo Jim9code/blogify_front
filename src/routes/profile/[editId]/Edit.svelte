@@ -115,14 +115,7 @@
       padding: 10px;
       min-height: 300px;
     }
-    .thumbnail-preview {
-      margin-top: 10px;
-      max-width: 200px;
-      max-height: 200px;
-      border: 1px solid #ddd;
-      display: block;
-      object-fit: cover;
-    }
+   
     button {
       margin-top: 20px;
       padding: 10px 20px;
