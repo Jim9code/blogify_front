@@ -3,7 +3,7 @@
   const serverUrl = import.meta.env.VITE_SERVER_URL
 
   // login
-let authenticated = true;
+let authenticated = false;
 let profilePicture = 'https://static.vecteezy.com/system/resources/previews/009/734/564/original/default-avatar-profile-icon-of-social-media-user-vector.jpg'
 let DefaultProfile = 'https://static.vecteezy.com/system/resources/previews/009/734/564/original/default-avatar-profile-icon-of-social-media-user-vector.jpg'
 
