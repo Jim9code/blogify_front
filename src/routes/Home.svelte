@@ -142,11 +142,11 @@
         justify-content: center;
     }
     .blog-card {
-      /* border: 1px solid #ddd; */
+      border: 1px solid #ddd;
       border-radius: 8px;
       overflow: hidden;
       margin: 16px 0;
-      /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       padding: 10px;
     }
     .thumbnail {
