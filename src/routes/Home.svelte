@@ -6,7 +6,7 @@
     let blogs = [];
   
     async function blog() {
-    const res = await fetch(`${serverUrl}/blogs`,{method:'get'})
+    const res = await fetch(`${serverUrl}/blogs`,{method:'get',credentials:'included'})
     if(res.ok){
       blogs= await res.json()
     }
