@@ -1,14 +1,19 @@
 <script>
   import { onMount } from "svelte";
-  
+  import Spinner from './Spinner.svelte'
+
 	const serverUrl = import.meta.env.VITE_SERVER_URL
 
+
+
     let blogs = [];
-  
+  let loading = false
     async function blog() {
+      loading = true
     const res = await fetch(`${serverUrl}/blogs`,{credentials:'include'})
     if(res.ok){
       blogs= await res.json()
+      loading = false
     }
   }
 
@@ -55,9 +60,13 @@
 
     <div class="outerdiv">
         <main class="blogcon">
-          {#if blogs.length <= 0}
-          <center><h6>No search  result !</h6></center>
+          {#if loading}
+             <Spinner/>
+             {#if blogs.length <= 0}
+             <center><h6>No search  result !</h6></center>
+             {/if}
           {/if}
+         
 
           {#each blogs as blog}
             <div class="blog-card">
