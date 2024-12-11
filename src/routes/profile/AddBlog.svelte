@@ -104,7 +104,7 @@
   
   
     <!-- Blog Creation -->
-    <section>
+    <section class="section">
       {#if loading}
         <Spinner/>
          {:else}
@@ -117,15 +117,15 @@
               </div>
                    {/if}
                  {:else}
-                 <center>
+                 
                   <div class="form-group">
                     <label for="title">Blog Title:</label>
                     <input id="title" type="text" bind:value={blogTitle} placeholder="Enter blog title" />
                   </div>
-                 </center>
+                
 
             
-                 <center>
+                 
                   <div class="form-group">
                     <label for="thumbnail">Thumbnail:</label>
                     <input id="thumbnail" type="file" accept="image/*" on:change={handleThumbnailChange} />
@@ -138,7 +138,7 @@
                     {/if}
                   </div>
               
-                 </center>
+              
                 
                 <div class="form-group">
                   <label for="editor">Blog Content:</label>
@@ -156,6 +156,9 @@
   </div>
   
   <style>
+    .section{
+      padding-left: 20px;
+    }
     .profile-container {
       padding: 20px;
       max-width: 800px;
