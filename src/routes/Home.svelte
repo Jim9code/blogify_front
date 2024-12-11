@@ -47,8 +47,9 @@
   
   
   
-<div>
+<div class="main">
   
+  <div class="innerdiv">
     <div class="searchdiv">
       <form on:submit|preventDefault={search} >
         <center>
@@ -76,12 +77,14 @@
                <!-- smal pic -->
                          
                 <div style="margin-top: 4px;">
-                  <small>Posted by {blog.bloger_username}</small>
+                   <!-- svelte-ignore a11y-img-redundant-alt -->
+                   <img src={blog.bloger_pic} crossorigin="anonymous" alt="Profile picture" width="30px" height="30px" loading="lazy" class="rounded-circle">
+                  <small> {blog.bloger_username}</small>
                 </div>
                 
               <div class="content">
                 
-                <h6><a href="/{blog.id}">{blog.blog_title}</a></h6>
+                <h6><a href="/{blog.id}">📖{blog.blog_title}</a></h6>
                 <!-- <p>{blog.excerpt}</p> -->
               </div>
               <!-- <div class="interaction-bar">
@@ -94,10 +97,24 @@
           {/each}
         </main>
       </div>
+  </div>
+    
 </div>
  
 
   <style>
+    .innerdiv{
+       background: rgba(0, 0, 0, 0.395);
+    }
+
+     .main{
+      /* background-image: url('https://th.bing.com/th/id/OIP.mn3d0p1ftih_wDtpLsJU2AHaFP?w=2500&h=1768&rs=1&pid=ImgDetMain'); */
+      background-image: url('https://i.pinimg.com/736x/3e/1c/45/3e1c452585b7ca2cdeb7304a9f45188e.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    } 
+
     h6 a{
       color: black;
       text-decoration: none;
@@ -105,7 +122,7 @@
 
 
     .btn_search{
-        background: rgba(50, 205, 50, 0.1);
+        background: rgba(50, 205, 50, 0.813);
         border-radius: 8px;
         padding: 7px;
         font-weight: bolder;
@@ -130,8 +147,9 @@
         justify-content: center;
         padding: 30px;
         position: sticky;
-        top: 0px;
+        top: 20px;
         z-index: 2000;
+      
     }
     .blogcon{
         width: 50%;
@@ -142,12 +160,13 @@
         justify-content: center;
     }
     .blog-card {
-      border: 1px solid #ddd;
+      /* border: 1px solid #ddd; */
       border-radius: 8px;
       overflow: hidden;
       margin: 16px 0;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       padding: 10px;
+      background: white;
     }
     .thumbnail {
       width: 100%;

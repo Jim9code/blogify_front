@@ -117,29 +117,38 @@
               </div>
                    {/if}
                  {:else}
-                 <div class="form-group">
-                  <label for="title">Blog Title:</label><br>
-                  <input id="title" type="text" bind:value={blogTitle} placeholder="Enter blog title" />
-                </div>
+                 <center>
+                  <div class="form-group">
+                    <label for="title">Blog Title:</label>
+                    <input id="title" type="text" bind:value={blogTitle} placeholder="Enter blog title" />
+                  </div>
+                 </center>
+
             
-                <div class="form-group">
-                  <label for="thumbnail">Thumbnail:</label><br>
-                  <input id="thumbnail" type="file" accept="image/*" on:change={handleThumbnailChange} />
-                  {#if blogThumbnailPreview}
-                    <img
-                      src={blogThumbnailPreview}
-                      alt="Thumbnail Preview"
-                      class="thumbnail-preview"
-                    />
-                  {/if}
-                </div>
-            
+                 <center>
+                  <div class="form-group">
+                    <label for="thumbnail">Thumbnail:</label>
+                    <input id="thumbnail" type="file" accept="image/*" on:change={handleThumbnailChange} />
+                    {#if blogThumbnailPreview}
+                      <img
+                        src={blogThumbnailPreview}
+                        alt="Thumbnail Preview"
+                        class="thumbnail-preview"
+                      />
+                    {/if}
+                  </div>
+              
+                 </center>
+                
                 <div class="form-group">
                   <label for="editor">Blog Content:</label>
                   <div id="editor"></div>
                 </div>
+
+                <center>
+                  <button on:click={submitBlog}>Submit Blog</button>
+                </center>
             
-                <button on:click={submitBlog}>Submit Blog</button>
             {/if}
       {/if}
       

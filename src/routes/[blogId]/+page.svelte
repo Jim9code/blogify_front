@@ -37,13 +37,14 @@ let blogId = $page.params.blogId;
                       
                 <div style="margin-top: 4px;">
                   <!-- svelte-ignore a11y-img-redundant-alt -->
-                  <!-- <img src={blog.bloger_pic} crossorigin="anonymous" alt="Profile picture" width="30px" height="30px" loading="lazy" class="rounded-circle"> -->
-                  <small>Posted by {blog.bloger_username}</small>
+                  <img src={blog.bloger_pic} crossorigin="anonymous" alt="Profile picture" width="30px" height="30px" loading="lazy" class="rounded-circle">
+                  <small> {blog.bloger_username}</small>
                 </div>
             
               <div class="content">
                 
-                <h6>{blog.blog_title}</h6>
+                <h6>📖 {blog.blog_title}</h6>
+                <br>
                 <p>{@html blog.blog_content}</p>
               </div>
               <!-- <div class="interaction-bar">
