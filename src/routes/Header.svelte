@@ -34,7 +34,7 @@ onMount(()=>{
 <div class="outdiv">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">Blogify</a>
+          <a style="font-family: monospace;" class="navbar-brand" href="/">WwwBlog</a>
           <!-- profile pic -->
           <a class="profilePic"  href="/profile">           
             <div>

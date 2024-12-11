@@ -103,21 +103,9 @@
  
 
   <style>
-    .innerdiv{
-       background: rgba(0, 0, 0, 0.395);
-       height: 100vh;
-    }
+   
 
-     .main{
-      /* background-image: url('https://th.bing.com/th/id/OIP.mn3d0p1ftih_wDtpLsJU2AHaFP?w=2500&h=1768&rs=1&pid=ImgDetMain'); */
-      background-image: url('https://i.pinimg.com/736x/3e/1c/45/3e1c452585b7ca2cdeb7304a9f45188e.jpg');
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 100vh;
-      overflow-y: hidden;;
-  
-    } 
+     
 
     h6 a{
       color: black;
@@ -157,8 +145,7 @@
     }
     .blogcon{
         width: 50%;
-      overflow-y: auto;
-      height: 100vh;
+      
     }
     .outerdiv{
         width: 100%;
