@@ -119,7 +119,7 @@
                  {:else}
                  
                   <div class="form-group">
-                    <label for="title">Blog Title:</label>
+                    <label for="title">Blog Title:</label><br>
                     <input id="title" type="text" bind:value={blogTitle} placeholder="Enter blog title" />
                   </div>
                 
@@ -127,7 +127,7 @@
             
                  
                   <div class="form-group">
-                    <label for="thumbnail">Thumbnail:</label>
+                    <label for="thumbnail">Thumbnail:</label><br>
                     <input id="thumbnail" type="file" accept="image/*" on:change={handleThumbnailChange} />
                     {#if blogThumbnailPreview}
                       <img
