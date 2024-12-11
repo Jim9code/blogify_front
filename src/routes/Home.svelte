@@ -16,6 +16,7 @@
       loading = false
     }
   }
+  blog()
 
   //  handle  search
   
@@ -37,9 +38,7 @@
   }
 	
 
-	onMount(()=>{
-    blog()
-  })
+	
 
    
 
