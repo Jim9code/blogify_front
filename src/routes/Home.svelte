@@ -105,6 +105,7 @@
   <style>
     .innerdiv{
        background: rgba(0, 0, 0, 0.395);
+       height: 95vh;
     }
 
      .main{
@@ -112,7 +113,8 @@
       background-image: url('https://i.pinimg.com/736x/3e/1c/45/3e1c452585b7ca2cdeb7304a9f45188e.jpg');
       background-position: center;
       background-repeat: no-repeat;
-      background-size: cover;
+      background-size: contain;
+      height: 90vh;
     } 
 
     h6 a{
