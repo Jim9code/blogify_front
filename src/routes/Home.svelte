@@ -16,7 +16,7 @@
       loading = false
     }
   }
-  blog()
+
 
   //  handle  search
   
@@ -38,7 +38,9 @@
   }
 	
 
-	
+	onMount(()=>{
+    blog()
+  })
 
    
 
@@ -62,6 +64,7 @@
         <main class="blogcon">
           {#if loading}
              <Spinner/>
+             {:else}
              {#if blogs.length <= 0}
              <center><h6>No search  result !</h6></center>
              {/if}
