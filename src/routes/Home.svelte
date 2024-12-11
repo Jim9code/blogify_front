@@ -105,7 +105,7 @@
   <style>
     .innerdiv{
        background: rgba(0, 0, 0, 0.395);
-       height: 95vh;
+       height: 100vh;
     }
 
      .main{
@@ -113,8 +113,10 @@
       background-image: url('https://i.pinimg.com/736x/3e/1c/45/3e1c452585b7ca2cdeb7304a9f45188e.jpg');
       background-position: center;
       background-repeat: no-repeat;
-      background-size: contain;
-      height: 90vh;
+      background-size: cover;
+      height: 100vh;
+      overflow-y: hidden;;
+  
     } 
 
     h6 a{
@@ -147,28 +149,32 @@
     .searchdiv{
         display: flex;
         justify-content: center;
-        padding: 30px;
+        padding: 4px;
         position: sticky;
-        top: 20px;
+        top: 0px;
         z-index: 2000;
       
     }
     .blogcon{
         width: 50%;
+      overflow-y: auto;
+      height: 100vh;
     }
     .outerdiv{
         width: 100%;
         display: flex;
         justify-content: center;
+      
     }
     .blog-card {
       /* border: 1px solid #ddd; */
       border-radius: 8px;
       overflow: hidden;
-      margin: 16px 0;
+      margin: 20px 0;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       padding: 10px;
       background: white;
+      
     }
     .thumbnail {
       width: 100%;
