@@ -47,12 +47,13 @@
     if(res.ok){
       const data = await res.json()
       logged_in = data.authenticated
+      console.log(logged_in)
     }
+  }
 
-    onMount(()=>{
+  onMount(()=>{
       login_status()
     })
-  }
 </script>
 
 
