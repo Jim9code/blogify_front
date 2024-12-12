@@ -1,8 +1,24 @@
 <script>
   import { onMount } from "svelte";
   import Spinner from './Spinner.svelte'
+	import Comment from "./Comment.svelte";
 
 	const serverUrl = import.meta.env.VITE_SERVER_URL
+
+  let comment = false
+  let blogCommenntID = 0
+
+    function toggleComment(blogcommentid){
+      comment = comment === false
+
+       blogCommenntID = blogcommentid
+      
+     
+    //  console.log(comment)
+
+    //  return comment
+
+  }
 
 
 
@@ -41,9 +57,6 @@
 	onMount(()=>{
     blog()
   })
-
-   
-
   </script>
   
   
@@ -89,24 +102,36 @@
                 <h6><a href="/{blog.id}">📖{blog.blog_title}</a></h6>
                 <!-- <p>{blog.excerpt}</p> -->
               </div>
-              <!-- <div class="interaction-bar">
+              <div class="interaction-bar">
                 <span class="icon">👍 0</span>
-                <span class="icon">💬 0</span>
+                <span class="icon" on:click={toggleComment(blog.id)}>💬</span>
                 <span class="icon">🔗 Share</span>
                 <span class="icon">👀 0</span>
-              </div> -->
+              </div> 
             </div>
           {/each}
+
+           {#if comment}
+           <Comment blogcommentId={blogCommenntID}/>
+           {/if}
+
+
         </main>
       </div>
   </div>
-    
 </div>
  
 
   <style>
-   
 
+    .icon{
+      cursor: pointer;
+    }
+   
+.interaction-bar{
+  display: flex;
+  justify-content: space-around;
+}
      
 
     h6 a{

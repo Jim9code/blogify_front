@@ -85,6 +85,8 @@ onMount(()=>{
         </div>
       </nav>
 
+      <center><span style="color: orangered; font-size:bolder;">Note : only comment section is working for now</span></center>
+
 
      
      
