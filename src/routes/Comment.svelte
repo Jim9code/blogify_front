@@ -89,12 +89,12 @@
         
           </div>
           <div class="user-info">
-            <span>Anonymous</span>
-            <p>at Eternity</p>
+            <span>Loading...</span>
+            <p>at Loading...</p>
           </div>
         </div>
         <p class="comment-content">
-          No Comments
+           Loading...
         </p>
       </div>
     </div>
