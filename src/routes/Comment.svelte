@@ -47,9 +47,10 @@
     if(res.ok){
       const data = await res.json()
       logged_in = data.authenticated
-      console.log(logged_in)
     }
   }
+
+  let closecomment = false
 
   onMount(()=>{
       login_status()
@@ -60,10 +61,13 @@
 
 
 
-
-<!-- /* From Uiverse.io by zanina-yassine */  -->
+{#if !closecomment}
+  <!-- /* From Uiverse.io by zanina-yassine */  -->
 <div class="card">
-  <span class="title">Comments</span>
+  <div style="display: flex; justify-content:space-around;">
+    <span class="title">Comments</span>
+    <span on:click={()=>{closecomment = true}} style="margin-right: 20px; margin-top:5px; cursor:pointer;">❌</span>
+  </div>
 
   <div class="overflow">
     {#if comments.length === 0}
@@ -133,10 +137,6 @@
       </div>
     </div>
     {/each}
-
-        
-
-    
   </div>
   
 
@@ -196,6 +196,9 @@
     
   </div>
 </div>
+{/if}
+
+
 
 <style>
    .overflow{
