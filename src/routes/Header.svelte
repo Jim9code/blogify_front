@@ -84,9 +84,7 @@ onMount(()=>{
         </div>
     </nav>
 
-    <div class="notification-banner">
-      <span>Note: only comment section is working for now</span>
-    </div>
+    
 </div>
 
 <style>
