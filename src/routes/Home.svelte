@@ -37,6 +37,7 @@
   //  handle  search
   
   let searchWord = ''
+  let showSearch = false
   async function search() {
     if(searchWord !== ''){
       const res = await fetch(`${serverUrl}/search`,{
@@ -131,11 +132,57 @@
   
   <div class="innerdiv">
     <div class="searchdiv">
-      <form on:submit|preventDefault={search} >
-        <center>
-            <input bind:value={searchWord} class="searchinput" type="search" placeholder="🔍 Search" > 
-            <button class="btn_search" type="submit">Search</button>
-        </center>
+      <form on:submit|preventDefault={search} class="search-form">
+        <div class="search-container">
+          <!-- Desktop Search (always visible) -->
+          <div class="desktop-search">
+            <div class="input-wrapper">
+              <span class="search-icon-prefix">🔍</span>
+              <input 
+                bind:value={searchWord} 
+                class="searchinput" 
+                type="search" 
+                placeholder="Search blogs..." 
+              >
+              {#if searchWord}
+                <button type="button" class="clear-button" on:click={() => {
+                  searchWord = '';
+                  blog();
+                }}>×</button>
+              {/if}
+            </div>
+          </div>
+
+          <!-- Mobile Search (collapsible) -->
+          <div class="mobile-search">
+            {#if showSearch}
+              <div class="input-group">
+                <div class="input-wrapper">
+                  <span class="search-icon-prefix">🔍</span>
+                  <input 
+                    bind:value={searchWord} 
+                    class="searchinput" 
+                    type="search" 
+                    placeholder="Search blogs..." 
+                    autofocus
+                  >
+                </div>
+                <div class="mobile-buttons">
+                  <button type="submit" class="search-button">Search</button>
+                  <button type="button" class="cancel-button" on:click={() => {
+                    showSearch = false;
+                    searchWord = '';
+                    blog();
+                  }}>Cancel</button>
+                </div>
+              </div>
+            {:else}
+              <button type="button" class="search-icon" on:click={() => showSearch = true}>
+                🔍
+              </button>
+            {/if}
+          </div>
+        </div>
       </form>
     </div>
 
@@ -251,10 +298,10 @@
 
     .searchdiv {
         background: white;
-        padding: 15px 0;
+        padding: 8px 0;
         position: sticky;
-        top: 0px;
-        z-index: 2000;
+        top: 40px;
+        z-index: 1999;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
@@ -299,7 +346,32 @@
       margin-right: 8px;
     }
 
-    @media only screen and (max-width: 768px) {
+    .desktop-search {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: 10px;
+    }
+
+    .mobile-search {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .desktop-search {
+        display: none;
+      }
+
+      .mobile-search {
+        display: flex;
+        width: 100%;
+      }
+
+      .searchdiv {
+        top: 35px;
+        padding: 6px 0;
+      }
+
       .blogcon {
         width: 100%;
         padding: 0 10px;
@@ -345,6 +417,197 @@
 
       .icon {
         font-size: 0.8rem;
+      }
+    }
+
+    .search-form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .search-container {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .input-wrapper {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-icon-prefix {
+      position: absolute;
+      left: 12px;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    .searchinput {
+      width: 100%;
+      padding: 8px 35px 8px 35px;
+      border-radius: 20px;
+      border: 2px solid #eee;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      background: #f8f9fa;
+    }
+
+    .searchinput:focus {
+      outline: none;
+      border-color: #4f46e5;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+
+    .clear-button {
+      position: absolute;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: #666;
+      cursor: pointer;
+      padding: 0 5px;
+      transition: color 0.2s ease;
+    }
+
+    .clear-button:hover {
+      color: #333;
+    }
+
+    .desktop-search {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .mobile-search {
+      display: none;
+    }
+
+    .search-icon {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      transition: background-color 0.2s ease;
+    }
+
+    .search-icon:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    @media (max-width: 768px) {
+      .desktop-search {
+        display: none;
+      }
+
+      .mobile-search {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .search-container {
+        max-width: 90%;
+      }
+
+      .searchdiv {
+        top: 35px;
+        padding: 6px 0;
+      }
+
+      .searchinput {
+        font-size: 0.9rem;
+        padding: 7px 30px 7px 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .search-container {
+        max-width: 95%;
+      }
+
+      .searchinput {
+        font-size: 0.85rem;
+      }
+    }
+
+    .input-group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mobile-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .search-button, .cancel-button {
+      padding: 6px 12px;
+      border-radius: 16px;
+      border: none;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .search-button {
+      background: #4f46e5;
+      color: white;
+      flex: 1;
+    }
+
+    .search-button:hover {
+      background: #4338ca;
+    }
+
+    .cancel-button {
+      background: #e5e7eb;
+      color: #4b5563;
+      padding: 6px 15px;
+    }
+
+    .cancel-button:hover {
+      background: #d1d5db;
+    }
+
+    @media (max-width: 768px) {
+      .input-group {
+        padding: 0 10px;
+      }
+
+      .mobile-buttons {
+        margin-top: 4px;
+      }
+
+      .search-button, .cancel-button {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .mobile-buttons {
+        margin-top: 6px;
+      }
+
+      .search-button, .cancel-button {
+        font-size: 0.8rem;
+        padding: 5px 10px;
       }
     }
   </style>
